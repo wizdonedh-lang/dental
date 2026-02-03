@@ -14,6 +14,7 @@ import { FloatingWhatsApp } from './components/FloatingWhatsApp';
 import { IntroAnimation } from './components/IntroAnimation';
 import { AboutPage } from './components/AboutPage';
 import { ContactPage } from './components/ContactPage';
+import { GalleryPage } from './components/GalleryPage';
 
 function App() {
   // Re-enabled intro animation
@@ -55,6 +56,14 @@ function App() {
           <>
             <Navbar currentPath={currentPath} />
             <ContactPage />
+            <Footer showMap={false} />
+          </>
+        );
+      case '/gallery':
+        return (
+          <>
+            <Navbar currentPath={currentPath} />
+            <GalleryPage />
             <Footer showMap={false} />
           </>
         );

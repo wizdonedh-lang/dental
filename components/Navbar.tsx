@@ -56,6 +56,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath = '/' }) => {
     { name: 'Home', href: '/', isAnchor: false },
     { name: 'About Us', href: '/about', isAnchor: false },
     { name: 'Services', href: '#services', isAnchor: true },
+    { name: 'Gallery', href: '/gallery', isAnchor: false },
     { name: 'Contact', href: '/contact', isAnchor: false },
   ];
 
