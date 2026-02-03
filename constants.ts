@@ -1,6 +1,6 @@
 import { Service, Doctor, Review } from './types';
 
-export const CLINIC_PHONE = "918072397192";
+export const CLINIC_PHONE = "918300375191";
 export const CLINIC_NAME = "Wizdone Dental Hospital";
 export const CLINIC_TAGLINE = "Wisdom Tooth and Maxillofacial Surgery Specialist";
 export const CLINIC_LOCATION = "R65P+6PX, Modern Layout First Cross St, Padur, Tamil Nadu – 603103";

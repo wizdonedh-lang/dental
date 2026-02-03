@@ -44,10 +44,15 @@ export const Footer: React.FC<FooterProps> = ({ showMap = true }) => {
               <span className="text-sm text-white font-semibold">{CLINIC_RATING}</span>
               <span className="text-xs text-slate-400">({CLINIC_REVIEW_COUNT} reviews)</span>
             </div>
-            <div className="flex gap-4">
-              <a href="#" className="hover:text-white transition-colors"><Facebook className="w-6 h-6" /></a>
-              <a href="#" className="hover:text-white transition-colors"><Instagram className="w-6 h-6" /></a>
-            </div>
+            <a
+              href="https://www.instagram.com/wizdone.dental"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 mt-4 px-4 py-2 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 rounded-lg text-white font-medium hover:opacity-90 transition-opacity"
+            >
+              <Instagram className="w-5 h-5" />
+              Follow us on Instagram
+            </a>
           </div>
 
           {/* Visit Our Clinic */}
@@ -60,7 +65,7 @@ export const Footer: React.FC<FooterProps> = ({ showMap = true }) => {
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-brand-500 shrink-0" />
-                <a href={`tel:${CLINIC_PHONE}`} className="hover:text-white transition-colors">+91 8072 397 192</a>
+                <a href={`tel:${CLINIC_PHONE}`} className="hover:text-white transition-colors">+91 8300 375 191</a>
               </li>
               <li className="flex items-start gap-3">
                 <Clock className="w-5 h-5 text-brand-500 shrink-0" />

@@ -69,7 +69,7 @@ export const ContactPage: React.FC = () => {
                                     className="flex items-center gap-2 text-slate-600 hover:text-brand-600 transition-colors"
                                 >
                                     <Phone className="w-4 h-4" />
-                                    <span>+91 8072 397 192</span>
+                                    <span>+91 8300 375 191</span>
                                 </a>
                                 <a
                                     href={whatsappLink}

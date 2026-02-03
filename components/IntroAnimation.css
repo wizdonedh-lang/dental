@@ -1,9 +1,13 @@
 /* =============================================
-   INTRO ANIMATION - Premium Healthcare Load
-   Sky Blue / White Day Theme
+   WIZDONE - Premium Cinematic Opening Animation
+   Precision in every Dental Procedure
    ============================================= */
 
-/* Overlay Container - Sky Blue Gradient */
+/* =============================================
+   SCENE 1: Calm Medical Entry (0–1.5s)
+   Background matches logo image (#E0E0E0 grey)
+   ============================================= */
+
 .intro-overlay {
     position: fixed;
     inset: 0;
@@ -11,15 +15,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     background: linear-gradient(180deg,
-            #87CEEB 0%,
-            #B0E0E6 20%,
-            #E0F4FF 50%,
-            #F0F9FF 80%,
-            #FFFFFF 100%);
+            #D8D8D8 0%,
+            #E0E0E0 30%,
+            #E8E8E8 60%,
+            #ECECEC 100%);
     opacity: 1;
     visibility: visible;
-    transition: opacity 0.8s ease-out, visibility 0.8s ease-out;
+    transition: opacity 1s ease-out, visibility 1s ease-out;
     will-change: opacity;
     overflow: hidden;
 }
@@ -29,134 +33,174 @@
     visibility: hidden;
 }
 
-/* Soft cloud-like ambient effect */
-.ambient-glow {
+/* Soft vignette for focus */
+.intro-overlay::before {
+    content: '';
     position: absolute;
-    width: 150%;
-    height: 150%;
-    background: radial-gradient(ellipse at 50% 30%,
-            rgba(255, 255, 255, 0.8) 0%,
-            rgba(255, 255, 255, 0.4) 30%,
-            transparent 60%);
-    animation: ambientFloat 6s ease-in-out infinite;
+    inset: 0;
+    background: radial-gradient(ellipse at center,
+            transparent 40%,
+            rgba(0, 0, 0, 0.03) 100%);
+    pointer-events: none;
+    z-index: 1;
 }
 
-@keyframes ambientFloat {
+/* =============================================
+   Ambient Light Particles (Scene 1)
+   ============================================= */
 
-    0%,
-    100% {
-        transform: translateY(0) scale(1);
-        opacity: 0.7;
-    }
-
-    50% {
-        transform: translateY(-10px) scale(1.02);
-        opacity: 0.9;
-    }
-}
-
-/* Floating Particles - Soft white */
-.particles {
+.ambient-particles {
     position: absolute;
     inset: 0;
     overflow: hidden;
     pointer-events: none;
+    opacity: 0;
+    animation: particlesFadeIn 1.5s ease-out forwards;
 }
 
-.particle {
+@keyframes particlesFadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.dust-particle {
     position: absolute;
-    width: 6px;
-    height: 6px;
-    background: rgba(255, 255, 255, 0.8);
+    width: 4px;
+    height: 4px;
+    background: radial-gradient(circle,
+            rgba(212, 175, 55, 0.6) 0%,
+            rgba(212, 175, 55, 0.1) 70%,
+            transparent 100%);
     border-radius: 50%;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-    animation: floatParticle 8s ease-in-out infinite;
+    animation: floatDust 12s ease-in-out infinite;
 }
 
-.particle-1 {
-    top: 15%;
-    left: 10%;
+.dust-particle:nth-child(1) {
+    top: 10%;
+    left: 15%;
     animation-delay: 0s;
+    animation-duration: 10s;
 }
 
-.particle-2 {
-    top: 25%;
-    left: 85%;
-    animation-delay: 1s;
-}
-
-.particle-3 {
-    top: 45%;
-    left: 20%;
-    animation-delay: 0.5s;
-}
-
-.particle-4 {
-    top: 60%;
-    left: 75%;
-    animation-delay: 1.5s;
-}
-
-.particle-5 {
-    top: 70%;
-    left: 30%;
-    animation-delay: 0.8s;
-}
-
-.particle-6 {
+.dust-particle:nth-child(2) {
     top: 20%;
-    left: 60%;
+    left: 80%;
     animation-delay: 2s;
+    animation-duration: 14s;
 }
 
-.particle-7 {
-    top: 80%;
-    left: 50%;
-    animation-delay: 0.3s;
+.dust-particle:nth-child(3) {
+    top: 40%;
+    left: 25%;
+    animation-delay: 1s;
+    animation-duration: 11s;
 }
 
-.particle-8 {
-    top: 35%;
-    left: 90%;
-    animation-delay: 1.2s;
+.dust-particle:nth-child(4) {
+    top: 60%;
+    left: 70%;
+    animation-delay: 3s;
+    animation-duration: 13s;
 }
 
-@keyframes floatParticle {
+.dust-particle:nth-child(5) {
+    top: 75%;
+    left: 35%;
+    animation-delay: 0.5s;
+    animation-duration: 12s;
+}
+
+.dust-particle:nth-child(6) {
+    top: 30%;
+    left: 55%;
+    animation-delay: 2.5s;
+    animation-duration: 15s;
+}
+
+.dust-particle:nth-child(7) {
+    top: 85%;
+    left: 85%;
+    animation-delay: 1.5s;
+    animation-duration: 10s;
+}
+
+.dust-particle:nth-child(8) {
+    top: 50%;
+    left: 10%;
+    animation-delay: 4s;
+    animation-duration: 14s;
+}
+
+@keyframes floatDust {
 
     0%,
     100% {
-        transform: translateY(0) scale(1);
+        transform: translateY(0) translateX(0) scale(1);
         opacity: 0.4;
     }
 
+    25% {
+        transform: translateY(-20px) translateX(10px) scale(1.2);
+        opacity: 0.7;
+    }
+
     50% {
-        transform: translateY(-30px) scale(1.3);
-        opacity: 0.8;
+        transform: translateY(-10px) translateX(-5px) scale(0.9);
+        opacity: 0.5;
+    }
+
+    75% {
+        transform: translateY(-30px) translateX(15px) scale(1.1);
+        opacity: 0.6;
     }
 }
 
-/* Logo Container - Bigger */
-.logo-container {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10;
+/* =============================================
+   SCENE 2: Golden Spiral Core Reveal (1.5–3s)
+   ============================================= */
+
+.golden-core {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    opacity: 0;
+    animation: goldenReveal 1.5s cubic-bezier(0.16, 1, 0.3, 1) 1.2s forwards;
+    z-index: 5;
 }
 
-/* Logo Glow Halo - Teal/Cyan glow */
-.logo-glow {
+@keyframes goldenReveal {
+    0% {
+        opacity: 0;
+        transform: scale(0.3) rotate(-180deg);
+    }
+
+    60% {
+        opacity: 1;
+        transform: scale(1.1) rotate(0deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+.golden-glow {
     position: absolute;
-    width: 700px;
-    height: 700px;
+    width: 100%;
+    height: 100%;
     background: radial-gradient(circle,
-            rgba(20, 184, 166, 0.5) 0%,
-            rgba(6, 182, 212, 0.3) 30%,
-            rgba(56, 189, 248, 0.15) 50%,
+            rgba(212, 175, 55, 0.5) 0%,
+            rgba(218, 165, 32, 0.3) 30%,
+            rgba(255, 215, 0, 0.15) 50%,
             transparent 70%);
+    filter: blur(25px);
     animation: glowPulse 3s ease-in-out infinite;
-    filter: blur(40px);
-    z-index: 0;
 }
 
 @keyframes glowPulse {
@@ -164,193 +208,516 @@
     0%,
     100% {
         transform: scale(1);
-        opacity: 0.5;
+        opacity: 0.6;
     }
 
     50% {
-        transform: scale(1.15);
-        opacity: 0.8;
+        transform: scale(1.2);
+        opacity: 0.9;
     }
 }
 
-/* Light Rays - Soft sunlight */
-.light-rays {
+/* Spiral element */
+.golden-spiral {
     position: absolute;
-    width: 100%;
-    height: 100%;
+    width: 120px;
+    height: 120px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: conic-gradient(from 0deg,
+            rgba(212, 175, 55, 0.8) 0deg,
+            rgba(255, 215, 0, 0.6) 90deg,
+            rgba(218, 165, 32, 0.4) 180deg,
+            rgba(212, 175, 55, 0.2) 270deg,
+            rgba(212, 175, 55, 0.8) 360deg);
+    animation: spiralRotate 6s linear infinite;
+    opacity: 0;
+    animation: spiralReveal 1.5s ease-out 1.5s forwards, spiralRotate 8s linear 1.5s infinite;
+}
+
+@keyframes spiralReveal {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5);
+    }
+
+    100% {
+        opacity: 0.7;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+@keyframes spiralRotate {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+/* Micro sparkles */
+.sparkle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: rgba(255, 223, 100, 0.9);
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.8);
+    opacity: 0;
+    animation: sparkleOut 2s ease-out infinite;
+}
+
+.sparkle:nth-child(1) {
+    top: 50%;
+    left: 50%;
+    animation-delay: 2s;
+}
+
+.sparkle:nth-child(2) {
+    top: 50%;
+    left: 50%;
+    animation-delay: 2.3s;
+}
+
+.sparkle:nth-child(3) {
+    top: 50%;
+    left: 50%;
+    animation-delay: 2.6s;
+}
+
+.sparkle:nth-child(4) {
+    top: 50%;
+    left: 50%;
+    animation-delay: 2.9s;
+}
+
+@keyframes sparkleOut {
+    0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(0.5);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(calc(-50% + var(--tx, 50px)), calc(-50% + var(--ty, -50px))) scale(0);
+    }
+}
+
+.sparkle:nth-child(1) {
+    --tx: 60px;
+    --ty: -40px;
+}
+
+.sparkle:nth-child(2) {
+    --tx: -50px;
+    --ty: -60px;
+}
+
+.sparkle:nth-child(3) {
+    --tx: 70px;
+    --ty: 50px;
+}
+
+.sparkle:nth-child(4) {
+    --tx: -60px;
+    --ty: 40px;
+}
+
+/* =============================================
+   SCENE 3 & 4: Logo Assembly & Brand Reveal
+   ============================================= */
+
+.logo-container {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1;
+    flex-direction: column;
+    z-index: 10;
 }
 
-.ray {
+/* Soft halo behind logo */
+.logo-halo {
     position: absolute;
-    background: linear-gradient(to bottom,
-            rgba(255, 255, 255, 0.4) 0%,
-            rgba(255, 255, 255, 0.1) 50%,
-            transparent 100%);
-    transform-origin: center top;
-    animation: rayGlow 5s ease-in-out infinite;
-}
-
-.ray-1 {
-    width: 3px;
-    height: 400px;
-    top: -200px;
-    transform: rotate(-20deg);
-    animation-delay: 0s;
-}
-
-.ray-2 {
-    width: 4px;
+    width: 500px;
     height: 500px;
-    top: -250px;
-    transform: rotate(0deg);
-    animation-delay: 0.7s;
+    background: radial-gradient(circle,
+            rgba(20, 140, 120, 0.12) 0%,
+            rgba(50, 180, 160, 0.08) 30%,
+            rgba(212, 175, 55, 0.05) 50%,
+            transparent 70%);
+    filter: blur(40px);
+    opacity: 0;
+    animation: haloFadeIn 1.5s ease-out 2.5s forwards;
+    z-index: 0;
 }
 
-.ray-3 {
-    width: 3px;
-    height: 380px;
-    top: -190px;
-    transform: rotate(20deg);
-    animation-delay: 1.4s;
-}
+@keyframes haloFadeIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
 
-@keyframes rayGlow {
-
-    0%,
     100% {
-        opacity: 0.2;
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* The main logo image - FLASH REVEAL */
+.logo-image {
+    position: relative;
+    max-width: 750px;
+    width: 92vw;
+    height: auto;
+    z-index: 10;
+    border-radius: 16px;
+
+    /* Initial state */
+    opacity: 0;
+    transform: scale(0.9);
+
+    /* Flash reveal animation */
+    animation: flashReveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
+}
+
+/* Radiant background glow */
+.radiant-glow {
+    position: absolute;
+    width: 120%;
+    height: 120%;
+    background: radial-gradient(ellipse at center,
+            rgba(255, 215, 0, 0.15) 0%,
+            rgba(212, 175, 55, 0.08) 30%,
+            rgba(20, 180, 160, 0.05) 50%,
+            transparent 70%);
+    filter: blur(60px);
+    opacity: 0;
+    animation: radiantPulse 1.2s ease-in-out 0.1s forwards, radiantBreathe 3s ease-in-out 1.5s infinite;
+    z-index: 2;
+}
+
+@keyframes radiantPulse {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
     }
 
     50% {
-        opacity: 0.5;
-    }
-}
-
-/* Logo Image - BIGGER and More Visible */
-.logo-image {
-    position: relative;
-    max-width: 600px;
-    width: 85vw;
-    height: auto;
-    z-index: 10;
-    filter: drop-shadow(0 10px 50px rgba(20, 184, 166, 0.4));
-
-    /* Top to bottom reveal with clip-path */
-    clip-path: inset(100% 0 0 0);
-    animation: logoRevealTopBottom 1.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
-}
-
-@keyframes logoRevealTopBottom {
-    0% {
-        clip-path: inset(100% 0 0 0);
-        opacity: 0;
+        opacity: 1;
+        transform: scale(1.1);
     }
 
     100% {
-        clip-path: inset(0 0 0 0);
-        opacity: 1;
-    }
-}
-
-/* Glow reveal effect that follows the logo */
-.logo-container::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 120%;
-    height: 100px;
-    background: linear-gradient(180deg,
-            rgba(20, 184, 166, 0.6) 0%,
-            rgba(6, 182, 212, 0.4) 50%,
-            transparent 100%);
-    filter: blur(30px);
-    animation: glowSweepDown 1.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
-    z-index: 5;
-}
-
-@keyframes glowSweepDown {
-    0% {
-        top: -50%;
-        opacity: 1;
-    }
-
-    100% {
-        top: 120%;
-        opacity: 0;
-    }
-}
-
-.intro-overlay.fadeOut .logo-image {
-    animation: logoExit 0.6s ease-out forwards;
-}
-
-@keyframes logoExit {
-    0% {
+        opacity: 0.8;
         transform: scale(1);
-        opacity: 1;
-    }
-
-    100% {
-        transform: scale(1.03);
-        opacity: 0;
     }
 }
 
-/* Text Light Sweep */
-.text-sweep {
+@keyframes radiantBreathe {
+
+    0%,
+    100% {
+        opacity: 0.6;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.08);
+    }
+}
+
+/* Inner intense halo */
+.logo-halo-inner {
     position: absolute;
-    bottom: 10%;
-    left: -100%;
-    width: 150%;
-    height: 80px;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle,
+            rgba(255, 223, 100, 0.4) 0%,
+            rgba(255, 215, 0, 0.25) 20%,
+            rgba(212, 175, 55, 0.15) 40%,
+            transparent 60%);
+    filter: blur(50px);
+    opacity: 0;
+    animation: haloIntenseReveal 1.5s ease-out 0.5s forwards, haloBreathe 2.5s ease-in-out 2s infinite;
+    z-index: 3;
+}
+
+@keyframes haloIntenseReveal {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes haloBreathe {
+
+    0%,
+    100% {
+        opacity: 0.8;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+}
+
+@keyframes flashReveal {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+        filter:
+            drop-shadow(0 0 0px rgba(255, 255, 255, 0)) drop-shadow(0 0 0px rgba(255, 215, 0, 0));
+    }
+
+    30% {
+        opacity: 1;
+        transform: scale(1.03);
+        filter:
+            drop-shadow(0 0 100px rgba(255, 255, 255, 1)) drop-shadow(0 0 80px rgba(255, 215, 0, 1)) drop-shadow(0 0 150px rgba(212, 175, 55, 0.9)) drop-shadow(0 0 200px rgba(20, 180, 160, 0.6));
+    }
+
+    60% {
+        transform: scale(0.98);
+        filter:
+            drop-shadow(0 0 60px rgba(255, 255, 255, 0.5)) drop-shadow(0 0 50px rgba(255, 215, 0, 0.7)) drop-shadow(0 0 100px rgba(212, 175, 55, 0.5)) drop-shadow(0 0 140px rgba(20, 180, 160, 0.3));
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+        filter:
+            drop-shadow(0 12px 35px rgba(0, 0, 0, 0.15)) drop-shadow(0 0 50px rgba(255, 215, 0, 0.45)) drop-shadow(0 0 100px rgba(212, 175, 55, 0.3)) drop-shadow(0 0 150px rgba(20, 180, 160, 0.18));
+    }
+}
+
+/* Continuous luxury glow breathing */
+.intro-overlay.hold .logo-image,
+.intro-overlay.reveal .logo-image {
+    animation: flashReveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards,
+        luxuryBreathing 2.5s ease-in-out 1s infinite;
+}
+
+@keyframes luxuryBreathing {
+
+    0%,
+    100% {
+        filter:
+            drop-shadow(0 12px 35px rgba(0, 0, 0, 0.15)) drop-shadow(0 0 45px rgba(255, 215, 0, 0.4)) drop-shadow(0 0 90px rgba(212, 175, 55, 0.25)) drop-shadow(0 0 130px rgba(20, 180, 160, 0.15));
+    }
+
+    50% {
+        filter:
+            drop-shadow(0 12px 35px rgba(0, 0, 0, 0.15)) drop-shadow(0 0 70px rgba(255, 215, 0, 0.6)) drop-shadow(0 0 130px rgba(212, 175, 55, 0.4)) drop-shadow(0 0 180px rgba(20, 180, 160, 0.25));
+    }
+}
+
+/* Light sweep effect */
+.light-sweep {
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 100%;
+    height: 100%;
     background: linear-gradient(90deg,
             transparent 0%,
-            rgba(255, 255, 255, 0.2) 45%,
-            rgba(255, 255, 255, 0.5) 50%,
-            rgba(255, 255, 255, 0.2) 55%,
+            rgba(255, 255, 255, 0.05) 25%,
+            rgba(255, 255, 255, 0.3) 50%,
+            rgba(255, 255, 255, 0.05) 75%,
             transparent 100%);
-    animation: textSweep 2.2s ease-in-out 1.2s forwards;
-    z-index: 11;
+    transform: skewX(-25deg);
+    animation: lightSweep 1.2s ease-in-out 2.5s forwards;
+    z-index: 15;
+    pointer-events: none;
 }
 
-@keyframes textSweep {
+@keyframes lightSweep {
     0% {
-        left: -100%;
+        left: -150%;
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    80% {
+        opacity: 1;
     }
 
     100% {
-        left: 100%;
+        left: 150%;
+        opacity: 0;
     }
+}
+
+@keyframes metallicSweep {
+    0% {
+        left: -100%;
+        opacity: 1;
+    }
+
+    100% {
+        left: 200%;
+        opacity: 0;
+    }
+}
+
+/* =============================================
+   SCENE 5: Tagline Lock-in (5–6s)
+   ============================================= */
+
+.tagline-container {
+    position: relative;
+    margin-top: 10px;
+    opacity: 0;
+    transform: translateY(15px);
+    animation: taglineFadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) 4.5s forwards;
+    z-index: 10;
+}
+
+@keyframes taglineFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.tagline-text {
+    font-family: 'Inter', 'Outfit', system-ui, sans-serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    color: rgba(80, 80, 80, 0.9);
+    text-transform: uppercase;
+    animation: breathe 4s ease-in-out infinite 5.5s;
+}
+
+@keyframes breathe {
+
+    0%,
+    100% {
+        opacity: 0.85;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+/* =============================================
+   Skip Button (for returning users)
+   ============================================= */
+
+.skip-button {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    padding: 10px 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: rgba(100, 100, 100, 0.7);
+    background: transparent;
+    border: 1px solid rgba(100, 100, 100, 0.3);
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 0;
+    animation: skipFadeIn 0.5s ease-out 1s forwards;
+    z-index: 20;
+}
+
+.skip-button:hover {
+    color: rgba(60, 60, 60, 0.9);
+    border-color: rgba(60, 60, 60, 0.5);
+    background: rgba(0, 0, 0, 0.02);
+}
+
+@keyframes skipFadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+/* =============================================
+   Fade Out Transition
+   ============================================= */
+
+.intro-overlay.fadeOut .logo-container,
+.intro-overlay.fadeOut .golden-core,
+.intro-overlay.fadeOut .tagline-container {
+    animation: dissolveOut 0.8s ease-out forwards;
+}
+
+@keyframes dissolveOut {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(1.02);
+    }
+}
+
+/* =============================================
+   Micro-Interactions: Parallax on Desktop
+   ============================================= */
+
+@media (hover: hover) and (pointer: fine) {
+    .logo-container {
+        transition: transform 0.3s ease-out;
+    }
+
+    /* Depth effect via JS will modify transform */
 }
 
 /* =============================================
    PAGE LOAD ANIMATIONS
    ============================================= */
 
-/* Hero Image Settle */
 .hero-animate {
-    transform: scale(1.1);
-    animation: heroSettle 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    animation-delay: 0.3s;
+    transform: scale(1.05);
+    opacity: 0;
+    animation: heroSettle 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 0.2s;
 }
 
 @keyframes heroSettle {
     0% {
-        transform: scale(1.1);
+        transform: scale(1.05);
+        opacity: 0;
     }
 
     100% {
         transform: scale(1);
+        opacity: 1;
     }
 }
 
-/* Text Masked Reveal */
 .text-reveal {
     overflow: hidden;
 }
@@ -362,15 +729,15 @@
 }
 
 .text-reveal-content.delay-1 {
-    animation-delay: 0.5s;
+    animation-delay: 0.4s;
 }
 
 .text-reveal-content.delay-2 {
-    animation-delay: 0.7s;
+    animation-delay: 0.6s;
 }
 
 .text-reveal-content.delay-3 {
-    animation-delay: 0.9s;
+    animation-delay: 0.8s;
 }
 
 @keyframes textReveal {
@@ -385,12 +752,11 @@
     }
 }
 
-/* Navigation Slide Down */
 .nav-animate {
     transform: translateY(-100%);
     opacity: 0;
     animation: navSlide 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    animation-delay: 0.2s;
+    animation-delay: 0.1s;
 }
 
 @keyframes navSlide {
@@ -405,7 +771,6 @@
     }
 }
 
-/* Trust Icons Fade In */
 .trust-icon-animate {
     transform: scale(0.95);
     opacity: 0;
@@ -413,19 +778,19 @@
 }
 
 .trust-icon-animate:nth-child(1) {
-    animation-delay: 1.0s;
+    animation-delay: 0.9s;
 }
 
 .trust-icon-animate:nth-child(2) {
-    animation-delay: 1.1s;
+    animation-delay: 1.0s;
 }
 
 .trust-icon-animate:nth-child(3) {
-    animation-delay: 1.2s;
+    animation-delay: 1.1s;
 }
 
 .trust-icon-animate:nth-child(4) {
-    animation-delay: 1.3s;
+    animation-delay: 1.2s;
 }
 
 @keyframes trustFade {
@@ -440,7 +805,6 @@
     }
 }
 
-/* Section Scroll Reveal */
 .section-reveal {
     opacity: 0;
     transform: translateY(30px);
@@ -453,51 +817,88 @@
     transform: translateY(0);
 }
 
-/* GPU Optimization */
+/* =============================================
+   GPU Optimization
+   ============================================= */
+
 .intro-overlay,
 .logo-container,
 .logo-image,
-.ambient-glow,
-.particle,
-.ray {
+.golden-core,
+.golden-spiral,
+.dust-particle,
+.sparkle {
     will-change: transform, opacity;
     backface-visibility: hidden;
 }
 
-/* Mobile Optimizations */
+/* =============================================
+   Responsive Design
+   ============================================= */
+
 @media (max-width: 768px) {
     .logo-image {
-        max-width: 380px;
+        max-width: 420px;
     }
 
-    .logo-glow {
-        width: 450px;
-        height: 450px;
+    .logo-halo {
+        width: 400px;
+        height: 400px;
     }
 
-    .ray {
-        display: none;
+    .golden-core {
+        width: 150px;
+        height: 150px;
     }
 
-    .particle {
-        width: 4px;
-        height: 4px;
+    .golden-spiral {
+        width: 90px;
+        height: 90px;
+    }
+
+    .tagline-text {
+        font-size: 0.85rem;
+        letter-spacing: 0.1em;
+    }
+
+    .skip-button {
+        bottom: 20px;
+        right: 20px;
+        font-size: 0.75rem;
+        padding: 8px 16px;
+    }
+
+    .dust-particle {
+        width: 3px;
+        height: 3px;
     }
 }
 
-/* Reduced Motion Preference */
+@media (max-width: 480px) {
+    .logo-image {
+        max-width: 340px;
+    }
+
+    .tagline-text {
+        font-size: 0.75rem;
+    }
+}
+
+/* =============================================
+   Reduced Motion Preference
+   ============================================= */
+
 @media (prefers-reduced-motion: reduce) {
     .intro-overlay {
-        animation: none;
+        transition: opacity 0.3s ease-out;
     }
 
     .logo-image {
-        clip-path: none;
-        animation: simpleFadeIn 0.5s ease-out forwards;
+        animation: simpleFadeIn 0.5s ease-out 0.5s forwards;
     }
 
-    .logo-container::before {
-        display: none;
+    .tagline-container {
+        animation: simpleFadeIn 0.5s ease-out 0.8s forwards;
     }
 
     @keyframes simpleFadeIn {
@@ -510,10 +911,16 @@
         }
     }
 
-    .ambient-glow,
-    .particle,
-    .ray,
-    .text-sweep {
-        animation: none !important;
+    .golden-core,
+    .golden-spiral,
+    .dust-particle,
+    .sparkle,
+    .metallic-sweep,
+    .logo-halo {
+        display: none;
+    }
+
+    .ambient-particles {
+        display: none;
     }
 }

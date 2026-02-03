@@ -62,13 +62,14 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath = '/' }) => {
           {/* Logo with Image */}
           <a href="/" className="flex items-center gap-3">
             <img
-              src="/images/wizdone-logo.png"
+              src="/images/wizdone-logo-full.jpg"
               alt="Wizdone Dental Hospital"
-              className="h-10 w-auto object-contain"
+              className="h-12 w-auto object-contain rounded"
             />
-            <span className="hidden sm:block text-lg md:text-xl font-bold text-brand-600">
-              {CLINIC_NAME}
-            </span>
+            <div className="hidden sm:flex flex-col">
+              <span className="text-lg font-bold text-brand-600">{CLINIC_NAME}</span>
+              <span className="text-xs text-slate-500">Precision in every Dental Procedure</span>
+            </div>
           </a>
 
           {/* Desktop Nav */}
