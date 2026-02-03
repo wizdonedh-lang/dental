@@ -23,6 +23,16 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath = '/' }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => { document.body.style.overflow = ''; };
+  }, [isOpen]);
+
   const handleNavClick = (href: string, isAnchor: boolean = false) => {
     setIsOpen(false);
 
@@ -55,92 +65,111 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath = '/' }) => {
   };
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-md py-2' : 'bg-white/95 backdrop-blur-sm py-3'}`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center">
+    <>
+      {/* Navigation Bar */}
+      <nav className={`fixed w-full z-[100] transition-all duration-300 ${scrolled ? 'bg-white shadow-md py-2' : 'bg-white/95 backdrop-blur-sm py-2 sm:py-3'}`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center">
 
-          {/* Logo with Image */}
-          <a href="/" className="flex items-center gap-3">
-            <img
-              src="/images/wizdone-logo-full.jpg"
-              alt="Wizdone Dental Hospital"
-              className="h-12 w-auto object-contain rounded"
-            />
-            <div className="hidden sm:flex flex-col">
-              <span className="text-lg font-bold text-brand-600">{CLINIC_NAME}</span>
-              <span className="text-xs text-slate-500">Precision in every Dental Procedure</span>
-            </div>
-          </a>
-
-          {/* Desktop Nav */}
-          <div className="hidden md:flex items-center space-x-6">
-            {navLinks.map((link) => (
-              <button
-                key={link.name}
-                onClick={() => handleNavClick(link.href, link.isAnchor)}
-                className={`font-medium transition-colors ${isActive(link.href)
-                  ? 'text-brand-600'
-                  : 'text-slate-600 hover:text-brand-600'
-                  }`}
-              >
-                {link.name}
-              </button>
-            ))}
-            <a
-              href={whatsappLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#25D366] text-white rounded-lg font-medium hover:bg-[#20bd5a] transition-colors shadow-lg shadow-green-500/20"
-            >
-              <WhatsAppIcon className="w-5 h-5" />
-              Book Appointment
+            {/* Logo + Name */}
+            <a href="/" className="flex items-center gap-2 sm:gap-3">
+              <img
+                src="/images/wizdone-logo-full.jpg"
+                alt="Wizdone Dental Hospital"
+                className="h-9 sm:h-12 w-auto object-contain rounded"
+              />
+              <div className="flex flex-col">
+                <span className="text-sm sm:text-base lg:text-lg font-bold text-brand-600">{CLINIC_NAME}</span>
+                <span className="text-[9px] sm:text-[10px] lg:text-xs text-slate-500 hidden sm:block">Precision in every Dental Procedure</span>
+              </div>
             </a>
-          </div>
 
-          {/* Mobile Menu Button */}
-          <div className="md:hidden">
-            <button onClick={() => setIsOpen(!isOpen)} className="text-slate-700 p-2">
-              {isOpen ? <X /> : <Menu />}
-            </button>
+            {/* Desktop Nav */}
+            <div className="hidden md:flex items-center space-x-4 lg:space-x-6">
+              {navLinks.map((link) => (
+                <button
+                  key={link.name}
+                  onClick={() => handleNavClick(link.href, link.isAnchor)}
+                  className={`font-medium transition-colors py-2 px-1 ${isActive(link.href)
+                    ? 'text-brand-600'
+                    : 'text-slate-600 hover:text-brand-600'
+                    }`}
+                >
+                  {link.name}
+                </button>
+              ))}
+              <a
+                href={whatsappLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 lg:px-5 py-2.5 bg-[#25D366] text-white rounded-lg font-medium hover:bg-[#20bd5a] transition-colors shadow-lg shadow-green-500/20"
+              >
+                <WhatsAppIcon className="w-5 h-5" />
+                <span className="hidden lg:inline">Book Appointment</span>
+                <span className="lg:hidden">Book</span>
+              </a>
+            </div>
+
+            {/* Mobile Menu Button */}
+            <div className="md:hidden">
+              <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="text-slate-700 p-2 min-h-[44px] min-w-[44px] flex items-center justify-center"
+                aria-label={isOpen ? "Close menu" : "Open menu"}
+              >
+                {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              </button>
+            </div>
           </div>
         </div>
-      </div>
+      </nav>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu - OUTSIDE NAV for proper z-index */}
       {isOpen && (
-        <div className="md:hidden bg-white border-t absolute w-full shadow-xl">
-          <div className="px-4 pt-2 pb-6 space-y-1">
+        <div className="md:hidden fixed inset-0 top-[52px] z-[200] bg-white overflow-y-auto">
+          <div className="px-4 pt-4 pb-8 space-y-2">
             {navLinks.map((link) => (
               <button
                 key={link.name}
                 onClick={() => handleNavClick(link.href, link.isAnchor)}
-                className={`block w-full text-left px-3 py-3 text-base font-medium rounded-md transition-colors ${isActive(link.href)
+                className={`block w-full text-left px-4 py-4 text-lg font-medium rounded-xl transition-colors min-h-[52px] ${isActive(link.href)
                   ? 'bg-brand-50 text-brand-600'
-                  : 'text-slate-700 hover:bg-brand-50 hover:text-brand-600'
+                  : 'text-slate-700 hover:bg-brand-50 hover:text-brand-600 active:bg-brand-100'
                   }`}
               >
                 {link.name}
               </button>
             ))}
-            <a
-              href={whatsappLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 w-full text-center mt-4 px-3 py-3 bg-[#25D366] text-white font-bold rounded-lg"
-            >
-              <WhatsAppIcon className="w-5 h-5" />
-              Book via WhatsApp
-            </a>
-            <a
-              href={`tel:${CLINIC_PHONE}`}
-              className="flex items-center justify-center gap-2 w-full text-center mt-2 px-3 py-3 bg-slate-100 text-slate-900 font-medium rounded-lg"
-            >
-              <Phone className="w-4 h-4" />
-              Call Hospital
-            </a>
+
+            <div className="pt-4 space-y-3">
+              <a
+                href={whatsappLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-3 w-full text-center px-4 py-4 bg-[#25D366] text-white font-bold rounded-xl text-lg min-h-[56px] active:bg-[#20bd5a]"
+              >
+                <WhatsAppIcon className="w-6 h-6" />
+                Book via WhatsApp
+              </a>
+              <a
+                href={`tel:${CLINIC_PHONE}`}
+                className="flex items-center justify-center gap-3 w-full text-center px-4 py-4 bg-slate-100 text-slate-900 font-medium rounded-xl text-lg min-h-[56px] active:bg-slate-200"
+              >
+                <Phone className="w-5 h-5" />
+                Call Hospital
+              </a>
+            </div>
           </div>
         </div>
       )}
-    </nav>
+
+      {/* Backdrop - OUTSIDE NAV */}
+      {isOpen && (
+        <div
+          className="md:hidden fixed inset-0 top-[52px] bg-black/50 z-[199]"
+          onClick={() => setIsOpen(false)}
+        />
+      )}
+    </>
   );
 };

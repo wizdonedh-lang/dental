@@ -16,6 +16,7 @@ import { AboutPage } from './components/AboutPage';
 import { ContactPage } from './components/ContactPage';
 
 function App() {
+  // Re-enabled intro animation
   const [showIntro, setShowIntro] = useState<boolean>(true);
   const [introComplete, setIntroComplete] = useState<boolean>(false);
   const [currentPath, setCurrentPath] = useState<string>(window.location.pathname);

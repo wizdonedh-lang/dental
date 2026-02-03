@@ -160,29 +160,30 @@ export const SmartBooking: React.FC = () => {
   };
 
   return (
-    <section id="booking" className="py-20 bg-slate-50 min-h-screen">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="booking" className="py-12 sm:py-16 lg:py-20 bg-slate-50 min-h-screen overflow-x-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden">
 
-        {/* Header */}
-        <div className="mb-12">
-          <h1 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight mb-3">
-            Book at Wizdone Dental Hospital, Padur
+        {/* Header - Responsive */}
+        <div className="mb-8 sm:mb-12">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight mb-2 sm:mb-3">
+            Book Your Appointment
           </h1>
-          <p className="text-lg text-slate-500 font-medium">
-            Skip the call. Secure your appointment via WhatsApp.
+          <p className="text-sm sm:text-base lg:text-lg text-slate-500 font-medium">
+            Skip the call. Secure your slot via WhatsApp.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+        {/* Grid - Reorder on mobile: Form first, then Summary */}
+        <div className="grid lg:grid-cols-12 gap-6 lg:gap-12 items-start">
 
-          {/* LEFT COLUMN: FORM STEPS */}
-          <div className="lg:col-span-8 space-y-12">
+          {/* LEFT COLUMN: FORM STEPS - Order 1 on mobile */}
+          <div className="lg:col-span-8 space-y-6 sm:space-y-8 lg:space-y-12 order-1 w-full max-w-full overflow-hidden">
 
             {/* Step 1: Treatment */}
-            <div id="step-treatment" className={`bg-white rounded-3xl p-6 md:p-8 border transition-all duration-300 ${errors.treatment ? 'border-red-200 shadow-[0_0_0_4px_rgba(239,68,68,0.1)]' : 'border-slate-100 shadow-sm'}`}>
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-10 h-10 rounded-full bg-brand-50 text-brand-700 flex items-center justify-center font-bold text-lg shadow-sm border border-brand-100">1</div>
-                <h3 className="text-xl font-bold text-slate-900">What brings you in today?</h3>
+            <div id="step-treatment" className={`bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 border transition-all duration-300 ${errors.treatment ? 'border-red-200 shadow-[0_0_0_4px_rgba(239,68,68,0.1)]' : 'border-slate-100 shadow-sm'}`}>
+              <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-brand-50 text-brand-700 flex items-center justify-center font-bold text-base sm:text-lg shadow-sm border border-brand-100">1</div>
+                <h3 className="text-lg sm:text-xl font-bold text-slate-900">What brings you in today?</h3>
               </div>
 
               <div className="md:ml-14">
@@ -192,7 +193,7 @@ export const SmartBooking: React.FC = () => {
                 <div className="flex items-center gap-4">
                   <div className="relative flex-grow">
                     <select
-                      className={`w-full p-4 bg-slate-50 border rounded-xl appearance-none font-semibold text-slate-700 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none cursor-pointer transition-colors ${errors.treatment ? 'border-red-300' : 'border-slate-200 hover:border-brand-300'}`}
+                      className={`w-full p-3 sm:p-4 bg-slate-50 border rounded-xl appearance-none font-semibold text-slate-700 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none cursor-pointer transition-colors min-h-[52px] text-base ${errors.treatment ? 'border-red-300' : 'border-slate-200 hover:border-brand-300'}`}
                       value={selectedTreatment}
                       onChange={(e) => {
                         setSelectedTreatment(e.target.value);
@@ -227,13 +228,13 @@ export const SmartBooking: React.FC = () => {
             </div>
 
             {/* Step 2: Date */}
-            <div className="bg-white rounded-3xl p-6 md:p-8 border border-slate-100 shadow-sm">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-10 h-10 rounded-full bg-brand-50 text-brand-700 flex items-center justify-center font-bold text-lg shadow-sm border border-brand-100">2</div>
-                <h3 className="text-xl font-bold text-slate-900">Pick a date that works for you</h3>
+            <div className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 border border-slate-100 shadow-sm">
+              <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-brand-50 text-brand-700 flex items-center justify-center font-bold text-base sm:text-lg shadow-sm border border-brand-100">2</div>
+                <h3 className="text-lg sm:text-xl font-bold text-slate-900">Pick a date</h3>
               </div>
 
-              <div className="md:ml-14 grid md:grid-cols-2 gap-8">
+              <div className="md:ml-14 flex flex-col gap-6 md:gap-8 md:grid md:grid-cols-2">
                 {/* Date Picker */}
                 <div className="border border-slate-200 rounded-2xl p-4 bg-white">
                   <div className="flex justify-between items-center mb-4 px-2">
@@ -261,8 +262,8 @@ export const SmartBooking: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Tip */}
-                <div className="flex items-start gap-3 text-sm text-slate-600 italic bg-slate-50 p-5 rounded-2xl border border-slate-100 h-fit">
+                {/* Tip - Hidden on mobile */}
+                <div className="hidden md:flex items-start gap-3 text-sm text-slate-600 italic bg-slate-50 p-5 rounded-2xl border border-slate-100 h-fit">
                   <Info className="w-5 h-5 text-brand-500 flex-shrink-0 mt-0.5" />
                   <p className="leading-relaxed">"Wednesdays are popular for routine checkups. We recommend booking at least 2 days in advance."</p>
                 </div>
@@ -270,10 +271,10 @@ export const SmartBooking: React.FC = () => {
             </div>
 
             {/* Step 3: Time Slot */}
-            <div id="step-slot" className={`bg-white rounded-3xl p-6 md:p-8 border transition-all duration-300 ${errors.slot ? 'border-red-200 shadow-[0_0_0_4px_rgba(239,68,68,0.1)]' : 'border-slate-100 shadow-sm'}`}>
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-10 h-10 rounded-full bg-brand-50 text-brand-700 flex items-center justify-center font-bold text-lg shadow-sm border border-brand-100">3</div>
-                <h3 className="text-xl font-bold text-slate-900">Pick a comfortable time</h3>
+            <div id="step-slot" className={`bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 border transition-all duration-300 ${errors.slot ? 'border-red-200 shadow-[0_0_0_4px_rgba(239,68,68,0.1)]' : 'border-slate-100 shadow-sm'}`}>
+              <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-brand-50 text-brand-700 flex items-center justify-center font-bold text-base sm:text-lg shadow-sm border border-brand-100">3</div>
+                <h3 className="text-lg sm:text-xl font-bold text-slate-900">Pick a time</h3>
               </div>
 
               <div className="md:ml-14">
@@ -285,13 +286,13 @@ export const SmartBooking: React.FC = () => {
                   </div>
                 )}
 
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 sm:gap-3">
                   {slots.map((slot) => (
                     <button
                       key={slot.time}
                       onClick={() => handleSlotClick(slot)}
                       className={`
-                        relative py-4 px-2 rounded-xl border-2 transition-all duration-200 flex flex-col items-center justify-center gap-1 group
+                        relative py-3 sm:py-4 px-2 rounded-xl border-2 transition-all duration-200 flex flex-col items-center justify-center gap-1 group min-h-[56px]
                         ${slot.isBooked
                           ? 'bg-slate-50 border-transparent text-slate-300 cursor-pointer'
                           : selectedSlot === slot.time
@@ -313,17 +314,17 @@ export const SmartBooking: React.FC = () => {
 
           </div>
 
-          {/* RIGHT COLUMN: SUMMARY SIDEBAR */}
-          <div className="lg:col-span-4 lg:sticky lg:top-24">
+          {/* RIGHT COLUMN: SUMMARY SIDEBAR - Order 2 on mobile (shows after form) */}
+          <div className="lg:col-span-4 lg:sticky lg:top-24 order-2 w-full max-w-full overflow-hidden">
             <div className="bg-white rounded-3xl shadow-2xl shadow-slate-200/50 overflow-hidden border border-slate-100">
               {/* Header */}
-              <div className="bg-[#00C2CB] p-6 text-white">
-                <h3 className="text-xl font-bold mb-1">Booking Summary</h3>
-                <p className="text-brand-50 text-sm opacity-90 font-medium">Review your selection before finalizing.</p>
+              <div className="bg-[#00C2CB] p-4 sm:p-6 text-white">
+                <h3 className="text-lg sm:text-xl font-bold mb-1">Booking Summary</h3>
+                <p className="text-brand-50 text-xs sm:text-sm opacity-90 font-medium">Review your selection before finalizing.</p>
               </div>
 
               {/* Content */}
-              <div className="p-6 space-y-6">
+              <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
 
                 {/* Details List */}
                 <div className="space-y-5">
@@ -382,10 +383,10 @@ export const SmartBooking: React.FC = () => {
                 {/* CTA Button */}
                 <button
                   onClick={handleWhatsAppBooking}
-                  className="w-full bg-[#25D366] hover:bg-[#20bd5a] text-white py-4 rounded-xl font-bold text-lg shadow-lg shadow-green-500/20 transition-all active:scale-[0.98] flex items-center justify-center gap-2 hover:shadow-xl"
+                  className="w-full bg-[#25D366] hover:bg-[#20bd5a] text-white py-3 sm:py-4 rounded-xl font-bold text-sm sm:text-base lg:text-lg shadow-lg shadow-green-500/20 transition-all active:scale-[0.98] flex items-center justify-center gap-2 hover:shadow-xl min-h-[52px]"
                 >
-                  <MessageCircle className="w-6 h-6" />
-                  Confirm on WhatsApp
+                  <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6" />
+                  <span>Confirm on WhatsApp</span>
                 </button>
 
                 {/* Footer Notes */}
