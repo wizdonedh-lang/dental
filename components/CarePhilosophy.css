@@ -1,0 +1,299 @@
+/* Care Philosophy - Horizontal Accordion Cards */
+
+.care-philosophy-section {
+    padding: 6rem 2rem;
+    background: linear-gradient(to bottom, #f8fafc, #ffffff);
+    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.care-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.care-header h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0 0 1rem 0;
+}
+
+.care-header p {
+    font-size: 1.125rem;
+    color: #64748b;
+    max-width: 42rem;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Cards Container - Horizontal Layout */
+.care-cards-container {
+    display: flex;
+    gap: 1rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    min-height: 500px;
+}
+
+/* Individual Card */
+.care-card {
+    position: relative;
+    flex: 1;
+    min-width: 120px;
+    height: 500px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Octagonal clip-path border effect */
+    clip-path: polygon(0 20px,
+            20px 0,
+            calc(100% - 20px) 0,
+            100% 20px,
+            100% calc(100% - 20px),
+            calc(100% - 20px) 100%,
+            20px 100%,
+            0 calc(100% - 20px));
+
+    background: #ffffff;
+    border: 3px solid #14b8a6;
+}
+
+.care-card.expanded {
+    flex: 3;
+}
+
+.care-card.collapsed {
+    flex: 0.8;
+}
+
+/* Card Image */
+.card-image-wrapper {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.card-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease, filter 0.6s ease;
+}
+
+.care-card:hover .card-image-wrapper img {
+    transform: scale(1.05);
+}
+
+.care-card.collapsed .card-image-wrapper img {
+    filter: brightness(0.7);
+}
+
+.image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right,
+            rgba(255, 255, 255, 0.1) 0%,
+            rgba(255, 255, 255, 0.6) 50%,
+            rgba(255, 255, 255, 0.1) 100%);
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+.care-card.expanded .image-overlay {
+    opacity: 1;
+    background: linear-gradient(to right,
+            rgba(255, 255, 255, 0.3) 0%,
+            rgba(255, 255, 255, 0.95) 40%,
+            rgba(255, 255, 255, 0.95) 60%,
+            rgba(255, 255, 255, 0.3) 100%);
+}
+
+/* Vertical Label */
+.vertical-label {
+    position: absolute;
+    left: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%) rotate(-90deg);
+    transform-origin: center center;
+
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #14b8a6;
+    white-space: nowrap;
+
+    transition: all 0.6s ease;
+    z-index: 10;
+}
+
+.care-card.expanded .vertical-label {
+    opacity: 0.3;
+    left: 1rem;
+    font-size: 1.25rem;
+}
+
+.care-card.collapsed .vertical-label {
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Expanded Content */
+.expanded-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    max-width: 400px;
+    text-align: center;
+
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.6s ease;
+    z-index: 10;
+}
+
+.care-card.expanded .expanded-content {
+    opacity: 1;
+    visibility: visible;
+}
+
+.content-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0 0 0.75rem 0;
+    line-height: 1.2;
+}
+
+.content-subtitle {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #14b8a6;
+    margin: 0 0 1.5rem 0;
+    line-height: 1.4;
+    font-style: italic;
+}
+
+.content-description {
+    font-size: 0.9375rem;
+    color: #475569;
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* Toggle Icon */
+.toggle-icon {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #14b8a6;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.care-card:hover .toggle-icon {
+    background: #14b8a6;
+    color: #ffffff;
+    transform: translateX(-50%) scale(1.1);
+}
+
+.care-card.expanded .toggle-icon {
+    background: #14b8a6;
+    color: #ffffff;
+}
+
+/* Hover effect for non-expanded cards */
+.care-card:not(.expanded):hover {
+    border-color: #0d9488;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .care-philosophy-section {
+        padding: 4rem 1rem;
+    }
+
+    .care-header h2 {
+        font-size: 2rem;
+    }
+
+    .care-cards-container {
+        flex-direction: column;
+        min-height: auto;
+    }
+
+    .care-card {
+        height: 120px;
+        min-width: 100%;
+        flex: none !important;
+    }
+
+    .care-card.expanded {
+        height: 400px;
+    }
+
+    .vertical-label {
+        transform: none;
+        top: 50%;
+        left: 1.5rem;
+        transform: translateY(-50%);
+        writing-mode: vertical-lr;
+        text-orientation: mixed;
+        transform: rotate(180deg);
+        left: auto;
+        right: 1.5rem;
+        top: 50%;
+    }
+
+    .care-card.expanded .vertical-label {
+        opacity: 0;
+    }
+
+    .expanded-content {
+        width: 80%;
+        max-width: none;
+    }
+
+    .content-title {
+        font-size: 1.5rem;
+    }
+
+    .toggle-icon {
+        bottom: 1rem;
+    }
+}
+
+/* Tablet */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .care-card {
+        height: 400px;
+    }
+
+    .expanded-content {
+        width: 70%;
+    }
+
+    .content-title {
+        font-size: 1.5rem;
+    }
+
+    .content-description {
+        font-size: 0.875rem;
+    }
+}

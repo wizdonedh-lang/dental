@@ -1,0 +1,519 @@
+/* =============================================
+   INTRO ANIMATION - Premium Healthcare Load
+   Sky Blue / White Day Theme
+   ============================================= */
+
+/* Overlay Container - Sky Blue Gradient */
+.intro-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(180deg,
+            #87CEEB 0%,
+            #B0E0E6 20%,
+            #E0F4FF 50%,
+            #F0F9FF 80%,
+            #FFFFFF 100%);
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.8s ease-out, visibility 0.8s ease-out;
+    will-change: opacity;
+    overflow: hidden;
+}
+
+.intro-overlay.fadeOut {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Soft cloud-like ambient effect */
+.ambient-glow {
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    background: radial-gradient(ellipse at 50% 30%,
+            rgba(255, 255, 255, 0.8) 0%,
+            rgba(255, 255, 255, 0.4) 30%,
+            transparent 60%);
+    animation: ambientFloat 6s ease-in-out infinite;
+}
+
+@keyframes ambientFloat {
+
+    0%,
+    100% {
+        transform: translateY(0) scale(1);
+        opacity: 0.7;
+    }
+
+    50% {
+        transform: translateY(-10px) scale(1.02);
+        opacity: 0.9;
+    }
+}
+
+/* Floating Particles - Soft white */
+.particles {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    animation: floatParticle 8s ease-in-out infinite;
+}
+
+.particle-1 {
+    top: 15%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.particle-2 {
+    top: 25%;
+    left: 85%;
+    animation-delay: 1s;
+}
+
+.particle-3 {
+    top: 45%;
+    left: 20%;
+    animation-delay: 0.5s;
+}
+
+.particle-4 {
+    top: 60%;
+    left: 75%;
+    animation-delay: 1.5s;
+}
+
+.particle-5 {
+    top: 70%;
+    left: 30%;
+    animation-delay: 0.8s;
+}
+
+.particle-6 {
+    top: 20%;
+    left: 60%;
+    animation-delay: 2s;
+}
+
+.particle-7 {
+    top: 80%;
+    left: 50%;
+    animation-delay: 0.3s;
+}
+
+.particle-8 {
+    top: 35%;
+    left: 90%;
+    animation-delay: 1.2s;
+}
+
+@keyframes floatParticle {
+
+    0%,
+    100% {
+        transform: translateY(0) scale(1);
+        opacity: 0.4;
+    }
+
+    50% {
+        transform: translateY(-30px) scale(1.3);
+        opacity: 0.8;
+    }
+}
+
+/* Logo Container - Bigger */
+.logo-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+/* Logo Glow Halo - Teal/Cyan glow */
+.logo-glow {
+    position: absolute;
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle,
+            rgba(20, 184, 166, 0.5) 0%,
+            rgba(6, 182, 212, 0.3) 30%,
+            rgba(56, 189, 248, 0.15) 50%,
+            transparent 70%);
+    animation: glowPulse 3s ease-in-out infinite;
+    filter: blur(40px);
+    z-index: 0;
+}
+
+@keyframes glowPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: scale(1.15);
+        opacity: 0.8;
+    }
+}
+
+/* Light Rays - Soft sunlight */
+.light-rays {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.ray {
+    position: absolute;
+    background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.4) 0%,
+            rgba(255, 255, 255, 0.1) 50%,
+            transparent 100%);
+    transform-origin: center top;
+    animation: rayGlow 5s ease-in-out infinite;
+}
+
+.ray-1 {
+    width: 3px;
+    height: 400px;
+    top: -200px;
+    transform: rotate(-20deg);
+    animation-delay: 0s;
+}
+
+.ray-2 {
+    width: 4px;
+    height: 500px;
+    top: -250px;
+    transform: rotate(0deg);
+    animation-delay: 0.7s;
+}
+
+.ray-3 {
+    width: 3px;
+    height: 380px;
+    top: -190px;
+    transform: rotate(20deg);
+    animation-delay: 1.4s;
+}
+
+@keyframes rayGlow {
+
+    0%,
+    100% {
+        opacity: 0.2;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* Logo Image - BIGGER and More Visible */
+.logo-image {
+    position: relative;
+    max-width: 600px;
+    width: 85vw;
+    height: auto;
+    z-index: 10;
+    filter: drop-shadow(0 10px 50px rgba(20, 184, 166, 0.4));
+
+    /* Top to bottom reveal with clip-path */
+    clip-path: inset(100% 0 0 0);
+    animation: logoRevealTopBottom 1.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+}
+
+@keyframes logoRevealTopBottom {
+    0% {
+        clip-path: inset(100% 0 0 0);
+        opacity: 0;
+    }
+
+    100% {
+        clip-path: inset(0 0 0 0);
+        opacity: 1;
+    }
+}
+
+/* Glow reveal effect that follows the logo */
+.logo-container::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120%;
+    height: 100px;
+    background: linear-gradient(180deg,
+            rgba(20, 184, 166, 0.6) 0%,
+            rgba(6, 182, 212, 0.4) 50%,
+            transparent 100%);
+    filter: blur(30px);
+    animation: glowSweepDown 1.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+    z-index: 5;
+}
+
+@keyframes glowSweepDown {
+    0% {
+        top: -50%;
+        opacity: 1;
+    }
+
+    100% {
+        top: 120%;
+        opacity: 0;
+    }
+}
+
+.intro-overlay.fadeOut .logo-image {
+    animation: logoExit 0.6s ease-out forwards;
+}
+
+@keyframes logoExit {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1.03);
+        opacity: 0;
+    }
+}
+
+/* Text Light Sweep */
+.text-sweep {
+    position: absolute;
+    bottom: 10%;
+    left: -100%;
+    width: 150%;
+    height: 80px;
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(255, 255, 255, 0.2) 45%,
+            rgba(255, 255, 255, 0.5) 50%,
+            rgba(255, 255, 255, 0.2) 55%,
+            transparent 100%);
+    animation: textSweep 2.2s ease-in-out 1.2s forwards;
+    z-index: 11;
+}
+
+@keyframes textSweep {
+    0% {
+        left: -100%;
+    }
+
+    100% {
+        left: 100%;
+    }
+}
+
+/* =============================================
+   PAGE LOAD ANIMATIONS
+   ============================================= */
+
+/* Hero Image Settle */
+.hero-animate {
+    transform: scale(1.1);
+    animation: heroSettle 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 0.3s;
+}
+
+@keyframes heroSettle {
+    0% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Text Masked Reveal */
+.text-reveal {
+    overflow: hidden;
+}
+
+.text-reveal-content {
+    transform: translateY(100%);
+    opacity: 0;
+    animation: textReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.text-reveal-content.delay-1 {
+    animation-delay: 0.5s;
+}
+
+.text-reveal-content.delay-2 {
+    animation-delay: 0.7s;
+}
+
+.text-reveal-content.delay-3 {
+    animation-delay: 0.9s;
+}
+
+@keyframes textReveal {
+    0% {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Navigation Slide Down */
+.nav-animate {
+    transform: translateY(-100%);
+    opacity: 0;
+    animation: navSlide 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 0.2s;
+}
+
+@keyframes navSlide {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Trust Icons Fade In */
+.trust-icon-animate {
+    transform: scale(0.95);
+    opacity: 0;
+    animation: trustFade 0.5s ease-out forwards;
+}
+
+.trust-icon-animate:nth-child(1) {
+    animation-delay: 1.0s;
+}
+
+.trust-icon-animate:nth-child(2) {
+    animation-delay: 1.1s;
+}
+
+.trust-icon-animate:nth-child(3) {
+    animation-delay: 1.2s;
+}
+
+.trust-icon-animate:nth-child(4) {
+    animation-delay: 1.3s;
+}
+
+@keyframes trustFade {
+    0% {
+        transform: scale(0.95);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Section Scroll Reveal */
+.section-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    will-change: opacity, transform;
+}
+
+.section-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* GPU Optimization */
+.intro-overlay,
+.logo-container,
+.logo-image,
+.ambient-glow,
+.particle,
+.ray {
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+    .logo-image {
+        max-width: 380px;
+    }
+
+    .logo-glow {
+        width: 450px;
+        height: 450px;
+    }
+
+    .ray {
+        display: none;
+    }
+
+    .particle {
+        width: 4px;
+        height: 4px;
+    }
+}
+
+/* Reduced Motion Preference */
+@media (prefers-reduced-motion: reduce) {
+    .intro-overlay {
+        animation: none;
+    }
+
+    .logo-image {
+        clip-path: none;
+        animation: simpleFadeIn 0.5s ease-out forwards;
+    }
+
+    .logo-container::before {
+        display: none;
+    }
+
+    @keyframes simpleFadeIn {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+    .ambient-glow,
+    .particle,
+    .ray,
+    .text-sweep {
+        animation: none !important;
+    }
+}
