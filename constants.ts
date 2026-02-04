@@ -1,8 +1,8 @@
 import { Service, Doctor, Review } from './types';
 
-export const CLINIC_PHONE = "918300375191";
+export const CLINIC_PHONE = "+918300375191";
 export const CLINIC_NAME = "Wizdone Dental Hospital";
-export const CLINIC_TAGLINE = "Wisdom Tooth and Maxillofacial Surgery Specialist";
+export const CLINIC_TAGLINE = "Maxillofacial surgeon, Wisdom tooth specialist and Implantologist";
 export const CLINIC_LOCATION = "R65P+6PX, Modern Layout First Cross St, Padur, Tamil Nadu – 603103";
 export const CLINIC_ADDRESS = "Padur, Tamil Nadu – 603103";
 export const CLINIC_RATING = 5.0;
@@ -61,8 +61,8 @@ export const MAIN_DOCTOR: Doctor = {
   id: 'dr-sriram',
   name: "Dr. K. G. Sriraam",
   qualification: "BDS, MDS (Oral & Maxillofacial Surgery)",
-  specialization: "Wisdom Tooth & Maxillofacial Surgery",
-  experienceYears: 5,
+  specialization: "Maxillofacial surgeon, Wisdom tooth specialist and Implantologist",
+  experienceYears: 10,
   patientsTreated: "8,000+",
   image: "/images/doctor-profile.png",
   quote: "My goal is to make you forget you're at the dentist. Every patient deserves a calm, painless experience with clear explanations at every step."

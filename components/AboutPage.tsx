@@ -167,7 +167,7 @@ export const AboutPage: React.FC = () => {
                                         </div>
                                         <div className="flex items-center gap-2 justify-center md:justify-start">
                                             <CheckCircle2 className="w-4 h-4 text-green-500 shrink-0" />
-                                            <span>Specialist in Wisdom Tooth Surgeries</span>
+                                            <span>Maxillofacial surgeon, Wisdom tooth specialist and Implantologist</span>
                                         </div>
                                         <div className="flex items-center gap-2 justify-center md:justify-start">
                                             <CheckCircle2 className="w-4 h-4 text-green-500 shrink-0" />

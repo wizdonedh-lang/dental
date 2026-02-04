@@ -53,7 +53,7 @@ export const DoctorProfile: React.FC = () => {
             <div className="space-y-2">
               <div className="flex items-center gap-2 text-sm text-slate-600">
                 <CheckCircle2 className="w-4 h-4 text-green-500" />
-                <span>Specialized in Wisdom Tooth & Surgical Extractions</span>
+                <span>Maxillofacial surgeon, Wisdom tooth specialist and Implantologist</span>
               </div>
               <div className="flex items-center gap-2 text-sm text-slate-600">
                 <CheckCircle2 className="w-4 h-4 text-green-500" />
